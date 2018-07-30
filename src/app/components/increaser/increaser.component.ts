@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-increaser',
@@ -6,6 +6,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styles: []
 })
 export class IncreaserComponent implements OnInit {
+
+  @ViewChild('txtProgress') txtProgress: ElementRef;
 
   @Input() marker: string = 'Marker';
   @Input() progress: number = 50;
@@ -15,6 +17,21 @@ export class IncreaserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onChanges( value: number ) {
+
+    if ( value <= 0 ) {
+      this.progress = 0;
+    } else if ( value >= 100 ) {
+      this.progress = 100;
+    } else {
+      this.progress = value;
+    }
+
+    this.txtProgress.nativeElement.value = this.progress;
+    this.updatedValue.emit( this.progress );
+
   }
 
   updateValue( value: number ) {
@@ -28,5 +45,6 @@ export class IncreaserComponent implements OnInit {
     }
 
     this.updatedValue.emit( this.progress );
+    this.txtProgress.nativeElement.focus();
   }
 }

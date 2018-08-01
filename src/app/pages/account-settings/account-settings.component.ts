@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../../services/settings.service';
+import { SettingsService } from '../../services/service.index';
 import * as $ from 'jquery/dist/jquery.min.js';
 
 @Component({

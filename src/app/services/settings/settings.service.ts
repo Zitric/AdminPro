@@ -28,7 +28,6 @@ export class SettingsService {
   applyTheme ( theme: string ) {
     const themeUrl = `assets/css/colors/${ theme }.css`;
     $( '#theme' ).attr('href', themeUrl );
-
     this.settings.theme = theme;
     this.settings.themeUrl = themeUrl;
     this.saveSetting();

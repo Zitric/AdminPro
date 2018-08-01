@@ -16,15 +16,11 @@ export class SettingsService {
 
   saveSetting() {
     localStorage.setItem( 'settings', JSON.stringify( this.settings ));
-    console.log('guardando en el storage');
   }
 
   loadSettings() {
     if ( localStorage.getItem( 'settings' )) {
       this.settings = JSON.parse( localStorage.getItem( 'settings' ));
-      console.log('cargando del local storage');
-    } else {
-      console.log('usando valores por defecto');
     }
     this.applyTheme( this.settings.theme );
   }

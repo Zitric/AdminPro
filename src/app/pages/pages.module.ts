@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { IncreaserComponent } from '../components/increaser/increaser.component';
 import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-chart.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     PagesComponent,
     IncreaserComponent,
     DoughnutChartComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    PromisesComponent,
+    RxjsComponent
 
   ],
   exports: [

@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       name: 'test',
       email: 'test@test.com',
       password: '123456',
-      passwordConfirmed: '123456',
+      passwordConfirmed: '123456v',
       conditions: true
     });
 

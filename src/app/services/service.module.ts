@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
-SettingsService,
-SidebarService,
-SharedService,
-UserService
+  SettingsService,
+  SidebarService,
+  SharedService,
+  UserService,
+  LoginGuardGuard
 } from './service.index';
 
 
@@ -19,7 +20,8 @@ UserService
     SettingsService,
     SidebarService,
     SharedService,
-    UserService
+    UserService,
+    LoginGuardGuard
   ],
   declarations: []
 })

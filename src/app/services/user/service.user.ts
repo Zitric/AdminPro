@@ -10,7 +10,9 @@ export class UserService {
   user: User;
   token: string;
 
-  constructor( public http: HttpClient ) { }
+  constructor( public http: HttpClient ) {
+    this.loadStorage();
+  }
 
   saveStorage( id: string, token: string, user: User ) {
     localStorage.setItem( 'id', id );
@@ -18,6 +20,20 @@ export class UserService {
     localStorage.setItem( 'user', JSON.stringify( user ));
     this.user = user;
     this.token = token;
+  }
+
+  loadStorage() {
+    if ( localStorage.getItem('token' )) {
+      this.token = localStorage.getItem( 'token' );
+      this.user = JSON.parse( localStorage.getItem( 'user' ));
+    } else {
+      this.token = '';
+      this.user = null;
+    }
+  }
+
+  isLogin() {
+    return  this.token.length > 0;
   }
 
   login( email: string, password: string, rememberme: boolean = false ) {

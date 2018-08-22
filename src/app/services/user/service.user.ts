@@ -3,6 +3,7 @@ import { User } from '../../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIES } from '../../config/config';
 import 'rxjs-compat/add/operator/map';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -10,7 +11,8 @@ export class UserService {
   user: User;
   token: string;
 
-  constructor( public http: HttpClient ) {
+  constructor( public http: HttpClient,
+               public router: Router) {
     this.loadStorage();
   }
 
@@ -75,5 +77,13 @@ export class UserService {
         swal( 'User created', user.email, 'success' );
         return res.user;
       });
+  }
+
+  logout() {
+    this.user = null;
+    this.token = '';
+    localStorage.removeItem( 'token' );
+    localStorage.removeItem( 'user' );
+    this.router.navigate([ '/login' ]);
   }
 }

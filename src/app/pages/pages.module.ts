@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PAGES_ROUTES } from './pages.routes';
 
+// ng2-charts
 import { ChartsModule } from 'ng2-charts';
 
 import { PagesComponent } from './pages.component';
@@ -9,6 +10,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+
+// Pipe Module
+import { PipesModule } from '../pipes/pipes.module';
+
+// Temporal
 import { IncreaserComponent } from '../components/increaser/increaser.component';
 import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-chart.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -16,6 +22,13 @@ import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
+  imports: [
+    SharedModule,
+    PAGES_ROUTES,
+    FormsModule,
+    ChartsModule,
+    PipesModule
+  ],
   declarations: [
     DashboardComponent,
     ProgressComponent,
@@ -32,12 +45,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     DashboardComponent,
     ProgressComponent,
     Graphics1Component
-  ],
-  imports: [
-    SharedModule,
-    PAGES_ROUTES,
-    FormsModule,
-    ChartsModule
   ]
 })
 

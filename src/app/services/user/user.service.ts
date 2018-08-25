@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 import { URL_SERVICIES } from '../../config/config';
 import 'rxjs-compat/add/operator/map';
-import {Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -79,11 +79,26 @@ export class UserService {
       });
   }
 
+  updateUser( user: User ) {
+
+    const url = URL_SERVICIES + '/users/' + user._id;
+
+    const headers = new HttpHeaders({
+      'token': this.token
+      });
+
+    console.log('header', headers.get('token'));
+
+    return this.http.put( url, user, { headers: headers });
+
+  }
+
   logout() {
     this.user = null;
     this.token = '';
     localStorage.removeItem( 'token' );
     localStorage.removeItem( 'user' );
+    localStorage.removeItem( 'id' );
     this.router.navigate([ '/login' ]);
   }
 }

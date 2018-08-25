@@ -14,12 +14,12 @@ import { FormsModule } from '@angular/forms';
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
 
-// Temporal
 import { IncreaserComponent } from '../components/increaser/increaser.component';
 import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-chart.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -38,7 +38,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     DoughnutChartComponent,
     AccountSettingsComponent,
     PromisesComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent
 
   ],
   exports: [

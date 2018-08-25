@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     if ( form.valid ) {
 
       this.userService.login( form.value.email, form.value.password, form.value.rememberme )
-        .subscribe( res => this.router.navigate(['/dashboard']));
+        .subscribe( () => this.router.navigate(['/dashboard']));
 
     }
   }

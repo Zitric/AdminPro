@@ -1,0 +1,47 @@
+<div class="row animated fadeIn">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">My profile</h4>
+        <h6 class="card-subtitle">Name of user</h6>
+
+        <form ngNativeValidate #f="ngForm" (ngSubmit)="saveForm( f.value )" class="form p-t-20">
+          <div class="form-group">
+            <label for="exampleInputuname">User Name</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input [ngModel]="user.name" type="text" class="form-control" name="name"
+                     id="exampleInputuname" placeholder="Username" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input [ngModel]="user.email" type="email" class="form-control" name="email"
+                     id="exampleInputEmail1" placeholder="Enter email" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-block btn-success waves-effect waves-light mt-3">
+            <i class="fa fa-save"></i>
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Photo of user</h4>
+        <img src="" alt="">
+        <input type="file">
+        <button type="submit" class="btn btn-block btn-success waves-effect waves-light mt-4">
+          <i class="fa fa-save"></i>
+          Update Photo
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

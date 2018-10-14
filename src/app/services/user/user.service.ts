@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
-import { URL_SERVICIES } from '../../config/config';
+import { URL_SERVICES } from '../../config/config';
 import 'rxjs-compat/add/operator/map';
 
 @Injectable()
@@ -40,7 +40,7 @@ export class UserService {
 
   login( email: string, password: string, rememberme: boolean = false ) {
 
-    const url = URL_SERVICIES + '/login';
+    const url = URL_SERVICES + '/login';
 
     if ( rememberme ) {
       localStorage.setItem( 'email', email );
@@ -58,7 +58,7 @@ export class UserService {
 
   loginGoogle( token: string ) {
 
-    const url = URL_SERVICIES + '/login/google';
+    const url = URL_SERVICES + '/login/google';
 
     return this.http.post( url, { token } )
       .map( ( res: any ) => {
@@ -70,7 +70,7 @@ export class UserService {
 
   createUser( user: User ) {
 
-    const url = URL_SERVICIES + '/users';
+    const url = URL_SERVICES + '/users';
 
     return this.http.post( url, user )
       .map( ( res: any ) => {

@@ -13,7 +13,6 @@ export class SettingsService {
     this.loadSettings();
   }
 
-
   saveSetting() {
     localStorage.setItem( 'settings', JSON.stringify( this.settings ));
   }

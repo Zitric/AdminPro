@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICES } from '../../config/config';
 import 'rxjs-compat/add/operator/map';
@@ -81,15 +81,18 @@ export class UserService {
 
   updateUser( user: User ) {
 
-    const url = URL_SERVICIES + '/users/' + user._id;
+    const url = URL_SERVICES + '/users/' + user._id;
 
     const headers = new HttpHeaders({
       'token': this.token
+    });
+
+    return this.http.put( url, user, { headers })
+      .map( ( res: any ) => {
+        this.saveStorage( res.user._id, this.token, res.user );
+        swal( 'User updated', user.name, 'success' );
+        return true;
       });
-
-    console.log('header', headers.get('token'));
-
-    return this.http.put( url, user, { headers: headers });
 
   }
 

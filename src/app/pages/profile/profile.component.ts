@@ -20,8 +20,10 @@ export class ProfileComponent implements OnInit {
 
   saveForm( user: User ) {
 
+    if ( !this.user.google ) {
+      this.user.email = user.email;
+    }
     this.user.name = user.name;
-    this.user.email = user.email;
 
     this.userService.updateUser( this.user )
       .subscribe( res => console.log(res));

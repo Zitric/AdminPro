@@ -68,7 +68,6 @@ export class RegisterComponent implements OnInit {
       swal( 'Important', 'You must accept the conditions', 'warning');
       return;
     }
-    console.log( this.form.value );
 
     const user = new User(
       this.form.value.name,

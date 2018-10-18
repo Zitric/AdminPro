@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyHttpInterceptor } from './httpinterceptor';
 
 
 
@@ -30,7 +32,9 @@ import { RegisterComponent } from './login/register.component';
     ReactiveFormsModule,
     ServiceModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

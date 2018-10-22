@@ -7,15 +7,14 @@ import { UserService } from '../../services/service.index';
   templateUrl: './profile.component.html',
   styles: []
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent  {
 
   user: User;
+  imageUpload: File;
+  tempImage: string;
 
   constructor( public userService: UserService ) {
     this.user = this.userService.user;
-  }
-
-  ngOnInit() {
   }
 
   saveForm( user: User ) {
@@ -28,5 +27,29 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser( this.user )
       .subscribe( res => console.log(res));
 
+  }
+
+  ImageSelection( file: File ) {
+
+    if ( !file ) {
+      this.imageUpload = null;
+      return;
+    }
+    if ( file.type.indexOf( 'image' ) < 0 ) {
+      swal( 'Just images', 'The file selected is not an image', 'error' );
+      this.imageUpload = null;
+      return;
+    }
+    this.imageUpload = file;
+
+    const reader = new FileReader();
+    const urlTempImage = reader.readAsDataURL( file );
+
+    reader.onloadend = () => this.tempImage = reader.result;
+
+  }
+
+  changeImage() {
+    this.userService.changeImage( this.imageUpload, this.user._id );
   }
 }

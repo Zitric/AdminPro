@@ -7,7 +7,8 @@ import {
   SidebarService,
   SharedService,
   UserService,
-  LoginGuardGuard
+  LoginGuardGuard,
+  UploadFileService
 } from './service.index';
 
 
@@ -21,7 +22,8 @@ import {
     SidebarService,
     SharedService,
     UserService,
-    LoginGuardGuard
+    LoginGuardGuard,
+    UploadFileService
   ],
   declarations: []
 })

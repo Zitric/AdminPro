@@ -3,6 +3,8 @@ import { User } from '../../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICES } from '../../config/config';
+import { UploadFileService } from '../upload-file/upload-file.service';
+
 import 'rxjs-compat/add/operator/map';
 
 @Injectable()
@@ -12,7 +14,8 @@ export class UserService {
   token: string;
 
   constructor( public http: HttpClient,
-               public router: Router) {
+               public router: Router,
+               public uploadFileService: UploadFileService ) {
     this.loadStorage();
   }
 
@@ -93,7 +96,6 @@ export class UserService {
         swal( 'User updated', user.name, 'success' );
         return true;
       });
-
   }
 
   logout() {
@@ -103,5 +105,20 @@ export class UserService {
     localStorage.removeItem( 'user' );
     localStorage.removeItem( 'id' );
     this.router.navigate([ '/login' ]);
+  }
+
+  changeImage( file: File, id: string ) {
+
+    this.uploadFileService.uploadFile( file, 'users', id )
+      .then(  ( res: any ) => {
+        console.log( 'res from then', res );
+        this.user.img = res.user.img;
+        swal( 'Image updated', this.user.name, 'success');
+        this.saveStorage( id, this.token, this.user );
+      })
+      .catch( res => {
+        console.log( 'res from catch', res );
+      });
+
   }
 }

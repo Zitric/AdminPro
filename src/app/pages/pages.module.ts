@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { PAGES_ROUTES } from './pages.routes';
 
 // ng2-charts
@@ -23,6 +24,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
+    CommonModule,
     SharedModule,
     PAGES_ROUTES,
     FormsModule,

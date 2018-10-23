@@ -1,13 +1,14 @@
-import {RouterModule, Routes} from '@angular/router';
-import {Graphics1Component} from './graphics1/graphics1.component';
-import {PagesComponent} from './pages.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {ProgressComponent} from './progress/progress.component';
-import {AccountSettingsComponent} from './account-settings/account-settings.component';
-import {PromisesComponent} from './promises/promises.component';
+import { RouterModule , Routes} from '@angular/router';
+import { Graphics1Component } from './graphics1/graphics1.component';
+import { PagesComponent } from './pages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProgressComponent } from './progress/progress.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import {LoginGuardGuard} from '../services/service.index';
-import {ProfileComponent} from './profile/profile.component';
+import { LoginGuardGuard } from '../services/service.index';
+import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
 
 
 const pagesRoutes: Routes = [
@@ -23,6 +24,8 @@ const pagesRoutes: Routes = [
       { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs'}  },
       { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Settings'}  },
       { path: 'profile', component: ProfileComponent, data: { title: 'My profile'}  },
+      // Managements
+      { path: 'users', component: UsersComponent, data: { title: 'Managements of users'}  },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
     ]
   }
